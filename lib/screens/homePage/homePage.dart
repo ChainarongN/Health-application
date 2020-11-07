@@ -1,14 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:health_application/screens/listcategory_doctor/listDoctor.dart';
-import 'package:health_application/screens/listcategory_doctor/listDoctor2.dart';
-import 'package:health_application/screens/listcategory_doctor/listDoctor3.dart';
-import 'package:health_application/screens/listcategory_doctor/listDoctor4.dart';
-import 'package:health_application/screens/listcategory_doctor/listDoctor5.dart';
-import 'package:health_application/screens/listcategory_doctor/listDoctor6.dart';
 import 'package:health_application/utility/constants.dart';
-import 'package:health_application/utility/session_card.dart';
-import 'package:health_application/utility/slider.dart';
+import 'file:///C:/Users/NGz/Documents/GitHub/Health-application/lib/screens/homePage/widget/session_card.dart';
+import 'file:///C:/Users/NGz/Documents/GitHub/Health-application/lib/screens/homePage/widget/slider.dart';
+import 'listDoctor.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -66,7 +61,7 @@ class HomePage extends StatelessWidget {
 //                          isDone: true,
                           press: () {
                             MaterialPageRoute route = MaterialPageRoute(
-                                builder: (value) => ListDoctor());
+                                builder: (value) => ListDoctor(sessionNum: 0));
                             Navigator.push(context, route);
                           },
                         ),
@@ -74,7 +69,7 @@ class HomePage extends StatelessWidget {
                           seassionName: "จิตวิทยา",
                           press: () {
                             MaterialPageRoute route = MaterialPageRoute(
-                                builder: (value) => ListDoctor2());
+                                builder: (value) => ListDoctor(sessionNum: 1));
                             Navigator.push(context, route);
                           },
                         ),
@@ -82,7 +77,7 @@ class HomePage extends StatelessWidget {
                           seassionName: "หมอเด็ก",
                           press: () {
                             MaterialPageRoute route = MaterialPageRoute(
-                                builder: (value) => ListDoctor3());
+                                builder: (value) => ListDoctor(sessionNum: 2));
                             Navigator.push(context, route);
                           },
                         ),
@@ -90,7 +85,7 @@ class HomePage extends StatelessWidget {
                           seassionName: "หัวหมอ",
                           press: () {
                             MaterialPageRoute route = MaterialPageRoute(
-                                builder: (value) => ListDoctor4());
+                                builder: (value) => ListDoctor(sessionNum: 3));
                             Navigator.push(context, route);
                           },
                         ),
@@ -98,7 +93,7 @@ class HomePage extends StatelessWidget {
                           seassionName: "หมอหมา",
                           press: () {
                             MaterialPageRoute route = MaterialPageRoute(
-                                builder: (value) => ListDoctor5());
+                                builder: (value) => ListDoctor(sessionNum: 4));
                             Navigator.push(context, route);
                           },
                         ),
@@ -106,7 +101,7 @@ class HomePage extends StatelessWidget {
                           seassionName: "หมอเกิ๊น",
                           press: () {
                             MaterialPageRoute route = MaterialPageRoute(
-                                builder: (value) => ListDoctor6());
+                                builder: (value) => ListDoctor(sessionNum: 5));
                             Navigator.push(context, route);
                           },
                         ),

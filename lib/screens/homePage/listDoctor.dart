@@ -1,31 +1,14 @@
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
+import 'package:health_application/screens/homePage/widget/item_list.dart';
 import 'package:health_application/utility/constants.dart';
-import 'package:health_application/utility/slider.dart';
-import 'package:health_application/utility/star.dart';
+import 'file:///C:/Users/NGz/Documents/GitHub/Health-application/lib/screens/homePage/widget/star.dart';
 
-class ListDoctor extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return _ListDoctorState();
-  }
-}
+class ListDoctor extends StatelessWidget {
+  int sessionNum = 0;
 
-class _ListDoctorState extends State<ListDoctor> {
+  ListDoctor({Key key, this.sessionNum}) : super(key: key);
   final double _borderRadius = 24;
-
-  var items = [
-    PlaceInfo('aaaaaaaaaaaaaa', Color(0xff6dc8f3), Color(0xff73a1f9), 4.4,
-        '11111111111111111', 'test • 1'),
-    PlaceInfo('bbbbbbbbbbbbbb', Color(0xff6dc8f3), Color(0xff73a1f9), 3.7,
-        '22222222222222222', 'test • 2'),
-    PlaceInfo('cccccccccccccc', Color(0xff6dc8f3), Color(0xff73a1f9), 4.5,
-        '33333333333333333', 'test • 3'),
-    PlaceInfo('dddddddddddddd', Color(0xff6dc8f3), Color(0xff73a1f9), 4.1,
-        '44444444444444444', 'test • 4'),
-    PlaceInfo('eeeeeeeeeeeeee', Color(0xff6dc8f3), Color(0xff73a1f9), 4.2,
-        '55555555555555555', 'test • 5'),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -34,12 +17,12 @@ class _ListDoctorState extends State<ListDoctor> {
         title: Text('List Doctor'),
       ),
       body: ListView.builder(
-        itemCount: items.length,
+        itemCount: myItemList(sessionNum).length,
         itemBuilder: (context, index) {
           return Center(
             child: InkWell(
               onTap: () {
-//                Scaffold.of(context).showSnackBar(SnackBar(content: Text(index.toString())));
+                Scaffold.of(context).showSnackBar(SnackBar(content: Text(index.toString())));
               },
               child: Padding(
                 padding: const EdgeInsets.all(15.0),
@@ -51,15 +34,15 @@ class _ListDoctorState extends State<ListDoctor> {
                         borderRadius: BorderRadius.circular(_borderRadius),
                         gradient: LinearGradient(
                           colors: [
-                            items[index].startColor,
-                            items[index].endColor,
+                            myItemList(sessionNum)[index].startColor,
+                            myItemList(sessionNum)[index].endColor,
                           ],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         ),
                         boxShadow: [
                           BoxShadow(
-                              color: items[index].endColor,
+                              color: myItemList(sessionNum)[index].endColor,
                               blurRadius: 12,
                               offset: Offset(0, 6)),
                         ],
@@ -71,18 +54,22 @@ class _ListDoctorState extends State<ListDoctor> {
                       top: 0,
                       child: CustomPaint(
                         size: Size(100, 150),
-                        painter: CustomCardShapePainter(_borderRadius,
-                            items[index].startColor, items[index].endColor),
+                        painter: CustomCardShapePainter(
+                            _borderRadius,
+                            myItemList(sessionNum)[index].startColor,
+                            myItemList(sessionNum)[index].endColor),
                       ),
                     ),
                     Positioned.fill(
                       child: Row(
                         children: <Widget>[
                           Expanded(
-                            child: Image.asset(
-                              'images/111.jpg',
-                              height: 90,
-                              width: 90,
+                            child: ClipOval(
+                              child: Image.asset(
+                                'images/111.jpg',
+                                height: 100,
+                                width: 90,
+                              ),
                             ),
                             flex: 3,
                           ),
@@ -93,13 +80,13 @@ class _ListDoctorState extends State<ListDoctor> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  items[index].name,
+                                  myItemList(sessionNum)[index].name,
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.w500),
                                 ),
                                 Text(
-                                  items[index].category,
+                                  myItemList(sessionNum)[index].category,
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.w500),
@@ -115,7 +102,8 @@ class _ListDoctorState extends State<ListDoctor> {
                                     mySizedBox_width(5),
                                     Flexible(
                                       child: Text(
-                                        items[index].description,
+                                        myItemList(sessionNum)[index]
+                                            .description,
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontWeight: FontWeight.w500),
@@ -132,13 +120,17 @@ class _ListDoctorState extends State<ListDoctor> {
                               mainAxisSize: MainAxisSize.min,
                               children: <Widget>[
                                 Text(
-                                  items[index].rating.toString(),
+                                  myItemList(sessionNum)[index]
+                                      .rating
+                                      .toString(),
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 18,
                                       fontWeight: FontWeight.w700),
                                 ),
-                                RaingBar(Rating: items[index].rating),
+                                RaingBar(
+                                    Rating:
+                                        myItemList(sessionNum)[index].rating),
                               ],
                             ),
                           )
@@ -154,18 +146,6 @@ class _ListDoctorState extends State<ListDoctor> {
       ),
     );
   }
-}
-
-class PlaceInfo {
-  final String name;
-  final String category;
-  final String description;
-  final double rating;
-  final Color startColor;
-  final Color endColor;
-
-  PlaceInfo(this.name, this.startColor, this.endColor, this.rating,
-      this.description, this.category);
 }
 
 class CustomCardShapePainter extends CustomPainter {

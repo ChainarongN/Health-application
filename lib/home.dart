@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:health_application/screens/homePage.dart';
-import 'package:health_application/screens/historyPage.dart';
+import 'file:///C:/Users/NGz/Documents/GitHub/Health-application/lib/screens/homePage/homePage.dart';
+import 'file:///C:/Users/NGz/Documents/GitHub/Health-application/lib/screens/historyPage/historyPage.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:health_application/screens/userPage.dart';
+import 'file:///C:/Users/NGz/Documents/GitHub/Health-application/lib/screens/userPage/userPage.dart';
 import 'package:health_application/utility/constants.dart';
 
 
